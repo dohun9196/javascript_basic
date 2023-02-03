@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content div {
+            display: none;
+        }
+
+        .content div.on {
+            display: block;
+        }
+
+        .menu li.on {
+            color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <h1></h1>
+    <nav></nav>
+    <div class="nav"></div>
+    <ul class="menu">
+        <li>menu01</li>
+        <li>menu02</li>
+        <li>menu03</li>
+    </ul>
+    <div class="content">
+        <div class="on">content01</div>
+        <div>content02</div>
+        <div>content03</div>
+    </div>
+    <script>
+        const UL = document.querySelectorAll('.menu li');
+        const CON = document.querySelectorAll('.content div');
+
+        console.log(UL, CON);
+
+        // $('.menu li').eq(1).on('click', functoion() {
+        // $('.content div').eq(1).addClass('on')
+        //});
+
+
+        //UL[1].addEventListener('click', () => CON[1].classList.add('on'));
+
+        // UL.forEach((it, idx) => {
+        //     it.addEventListener('click', () => {
+        //         CON.forEach(it => it.classList.remove('on'))
+        //         CON[idx].classList.add('on')
+        //     });
+        // });
+
+
+        // for (i = 0; i < UL.length; i++) {
+        //     UL[i].addEventListener('click', e => {
+        //         for (j = 0; j < CON.length; j++) {
+        //             CON[j].classList.remove('on')
+        //         }
+        //         //let idx = [...UL].indexOf(this);
+        //         let idx = [...UL].indexOf(e.target);
+        //         CON[idx].classList.add('on')
+        //     })
+        // }
+
+        for (const it of UL) {
+            it.innerHTML = '오잉?';
+            const idx = [...UL].indexOf(it);
+            it.addEventListener('click', function () {
+                this.innerHTML = '오~~~';
+                for (const it of UL) {
+                    it.classList.remove('on')
+                }
+                this.classList.add('on');
+                for (const it of CON) {
+                    it.classList.remove('on')
+                }
+                CON[idx].classList.add('on')
+            });
+        }
+
+    </script>
+</body>
+
+</html>

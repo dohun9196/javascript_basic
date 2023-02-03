@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <style>
+        .swiper {
+            width: 100%;
+        }
+
+        .mainSlide {
+            height: 600px;
+        }
+
+        .swiper-slide .case {
+            height: 600px;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 130%;
+            height: 100%;
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .swiper-slide-active {
+            z-index: 2;
+        }
+
+        .swiper-slide-prev {
+            z-index: 1;
+        }
+
+        .swiper-slide-next {
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>여기...</h1>
+    <section id="mainSLide">
+        <div class="inner">
+            <!-- Slider main container -->
+            <div class="swiper mainSlide">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="case parallax-bg" style="
+                        background-image: url(./img/main_visual01.jpg);
+                      " data-swiper-parallax="10%">
+                            Slide 1
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="case parallax-bg" style="
+                        background-image: url(./img/main_visual02.jpg);
+                      " data-swiper-parallax="10%">
+                            Slide 1
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="case parallax-bg" style="
+                        background-image: url(./img/main_visual03.jpg);
+                      " data-swiper-parallax="10%">
+                            Slide 1
+                        </div>
+                    </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- If we need navigation buttons -->
+                <div class="prev_btn">이전</div>
+                <div class="next_btn">다음</div>
+
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const MainSlide = new Swiper('.swiper', {
+            // Optional parameters
+            //direction: 'vertical',
+            loop: true,
+            parallax: true,
+            autoplay: {
+                delay: 6500,
+                disableOnInteraction: false,
+            },
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.next_btn',
+                prevEl: '.prev_btn',
+            },
+
+            on: {
+                init: s => {
+                    document.querySelector('h1').innerHTML = `${s.slides.length} / ${s.realIndex}`;
+                },
+
+                slideChange: s => {
+                    console.log(s)
+                    document.querySelector('h1').innerHTML = `${s.slides.length} / ${s.realIndex}`;
+                    $('.swiper-slide .parallax-bg').attr('data-swiper-parallax-duration', '');
+                    $('.swiper-slide-prev .parallax-bg').attr('data-swiper-parallax-duration', '4000');
+                }
+            },
+
+
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
+</body>
+
+</html>

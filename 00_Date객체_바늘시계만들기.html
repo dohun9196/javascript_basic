@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clack {
+            position: absolute;
+            inset: 50% auto auto 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: #f7f7f7;
+            font-size: 0;
+        }
+
+        .clack i {
+            position: absolute;
+            inset: 50% auto auto 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #333;
+            font-size: 0;
+
+        }
+
+        .clack strong {
+            position: absolute;
+            inset: 0 auto auto calc(50% - 5px);
+            transform-origin: center bottom;
+            width: 10px;
+            height: 50%;
+            border-radius: 3px;
+            background: gold;
+            font-size: 0;
+        }
+
+        .clack span {
+            position: absolute;
+            inset: 0 auto auto calc(50% - 5px);
+            transform-origin: center bottom;
+            width: 10px;
+            height: 50%;
+            border-radius: 3px;
+            background: #ddd;
+            font-size: 0;
+        }
+
+        .clack em {
+            position: absolute;
+            inset: 0 auto auto calc(50% - 5px);
+            transform-origin: center bottom;
+            width: 10px;
+            height: 50%;
+            border-radius: 3px;
+            background: tomato;
+            font-size: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clack">
+        <strong>hour</strong>
+        <span>minute</span>
+        <em>second</em>
+        <i></i>
+    </div>
+
+    <h1></h1>
+
+    <script>
+        const WATCH = () => {
+
+            const d = new Date();
+            const f = new Date('2023-02-01 17:50:00')
+            const lo = d.toLocaleTimeString();
+
+            if (d.getTime() > f.getTime()) {
+                document.querySelector('h1').innerHTML = '집에가자';
+                clearInterval(D);
+                return;
+            }
+
+            document.querySelector('h1').innerHTML = `지금시간은 ${lo} `;
+
+            const h = d.getHours();
+            const m = d.getMinutes();
+            const s = d.getSeconds();
+            console.log(d.getTime(), f.getTime());
+
+            document.querySelector('.clack strong').style.transform = `rotate(${h * (360 / 12)}.deg)`
+            document.querySelector('.clack span').style.transform = `rotate(${m * (360 / 60)}.deg)`
+            document.querySelector('.clack em').style.transform = `rotate(${s * (360 / 60)}.deg)`
+
+
+
+
+            console.log(h, m, s);
+        }
+
+        const D = setInterval(WATCH, 1000);
+
+    </script>
+
+</body>
+
+</html>

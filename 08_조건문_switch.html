@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>나이트 입장...</h1>
+    <h2></h2>
+    <input type="text" class="age">
+    <button>click</button>
+
+    <script>
+
+        //만약에 청소년(18)'환영', 아이면 '집에가라', 38이상이면 '아버님 이러시면 안돼요'...;
+        // if else ---> switch;
+
+        //let a = 38;
+
+        const H2 = document.querySelector('h2');
+        const BTN = document.querySelector('button');
+        const INPUT = document.querySelector('.age');
+
+
+        const W = () => {
+            const a = INPUT.value;
+
+            // if (a > 18 && a < 38) {
+            //     H2.innerHTML = '환영'
+            // } else if (a <= 18) {
+            //     H2.innerHTML = '집에가라'
+            // } else if (a >= 38) {
+            //     H2.innerHTML = '아버님 이러시면 안돼요'
+            // }
+
+            // switch (a) {
+            //     case 3:
+            //         alert('비교하려는 값보다 작습니다.');
+            //         break;
+            //     case 4:
+            //         alert('비교하려는 값과 일치합니다.');
+            //         break;
+            //     case 5:
+            //         alert('비교하려는 값보다 큽니다.');
+            //         break;
+            //     default:
+            //         alert("어떤 값인지 파악이 되지 않습니다.");
+            // }
+
+            let n;
+
+            if (a > 18 && a < 38) {
+                n = '청소년';
+            } else if (a <= 18) {
+                n = '아이';
+            } else if (a >= 38) {
+                n = '어르신';
+            }
+
+            switch (n) {
+                case '청소년':
+                    H2.innerHTML = '환영';
+                    break;
+                case '아이':
+                    H2.innerHTML = '집에가라';
+                    break;
+                case '어르신':
+                    H2.innerHTML = '아버님 이러시면 안돼요';
+                    break;
+                default:
+                    H2.innerHTML = '입력하세요...';
+            }
+
+        }
+
+        BTN.addEventListener('click', W);
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

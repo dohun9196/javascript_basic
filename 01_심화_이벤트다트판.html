@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dart {
+            position: absolute;
+            inset: 50% auto auto 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dart img {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1></h1>
+    <div class="dart">
+        <img src="./img/dart.jpg" alt="">
+    </div>
+    <button class="event">Click</button>
+
+
+    <script>
+        const EVENT_BTN = document.querySelector('.event');
+        const EVENT_DART = document.querySelector('.dart img');
+
+        const EVENT_DB = ['꽝', '자전거', '자동차', '꽝', '자전거', '자동차', '꽝', '자전거', '자동차', '꽝', '자전거', '자동차',]
+
+
+        const EVENT = () => {
+            let num = Math.floor(Math.random() * 12 + 1);
+            EVENT_DART.style.cssText = `
+            transform : rotate(${720 + 360 / num}deg);
+            transition: 1s;
+            `;
+            document.querySelector('h1').innerHTML = EVENT_DB[num - 1]
+        }
+
+        EVENT_BTN.addEventListener('click', EVENT)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>크리스마스까지 <span></span> 남았당.</h1>
+    <script>
+
+
+        const WATCH = () => {
+            const D = new Date();
+            const C = new Date('2023-12-25 00:00:00');
+
+            const SS = D.getTime();
+            const SF = C.getTime();
+
+            const D_day = SF - SS;
+
+
+            console.log(D, parseInt(D_day));
+            document.querySelector('h1 span').innerHTML = `
+                ${Math.floor(D_day / (24 * 60 * 60 * 1000))}일 
+                ${Math.floor((D_day / (60 * 60 * 1000)) % 24)}시간 
+                ${Math.floor((D_day / (60 * 1000)) % 60)}분 
+                ${Math.floor((D_day / 1000) % 60)}초
+            `;
+        }
+
+        setInterval(WATCH, 1000)
+    </script>
+</body>
+
+</html>

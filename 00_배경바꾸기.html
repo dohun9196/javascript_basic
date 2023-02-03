@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            transition: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <button>bg_change</button>
+    <script>
+        const BODY = document.querySelector('body');
+        const BTN = document.querySelector('button');
+
+        const BGC = () => {
+            const BG_COLOR = [];
+            for (let i = 0; i < 3; i++) {
+                const n = Math.floor(Math.random() * 255 + 1);
+                BG_COLOR.push(n);
+                BODY.style.background = `rgb(${BG_COLOR[0]},${BG_COLOR[1]},${BG_COLOR[2]})`;
+            }
+            console.log(BG_COLOR);
+        }
+
+        BGC();
+
+        BTN.addEventListener('click', BGC);
+
+    </script>
+</body>
+
+</html>

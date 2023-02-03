@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <script>
+        const H1 = document.querySelector('h1');
+        let num = 0;
+        H1.innerHTML = num;
+        const NUM = () => {
+            num += 1;
+            H1.innerHTML = num;
+            if (num === 100) {
+                clearInterval(SET_NUM)
+            }
+        }
+
+        const SET_NUM = setInterval(NUM, 100);
+    </script>
+</body>
+
+</html>
