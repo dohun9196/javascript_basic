@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <script>
+
+        //step02 : promise 도입.
+
+        const H1 = document.querySelector('h1');
+
+        // const textHandler = () => {
+        //     let a = res;
+        //     console.log(a);
+        // }
+
+        // const getDATA = () => {
+        //     setTimeout(() => console.log(1), 3000)
+        // }
+        const r = 1;
+        const PRO = new Promise((res, rej) => {
+            //시간이 걸리는 작업을 담아두고 약속해 놓음
+            setTimeout(() => res(r), 3000)
+        });
+        // then : 약속한 작업이 이루어진 뒤에...
+        PRO.then((a) => H1.innerHTML = a);
+
+
+
+        //step03 : async await
+
+
+
+    </script>
+</body>
+
+</html>

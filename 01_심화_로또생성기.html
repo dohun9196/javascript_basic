@@ -25,7 +25,7 @@
 
         while (LOTTO.size < 6) {
             const num = Math.floor(Math.random() * 45 + 1)
-            LOTTO.add(num)
+            LOTTO.add(num);
         }
         const LOTTO_SET = () => {
             H1.innerHTML = [...LOTTO].sort((A, B) => A - B);

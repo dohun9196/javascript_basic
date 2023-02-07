@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .photo {
+            width: 1200px;
+            margin: 200px auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1></h1>
+    <ul class="photo">
+
+    </ul>
+    <script>
+
+        //step02 : promise 도입.
+
+        const H1 = document.querySelector('h1');
+        const UL = document.querySelector('.photo');
+
+        const r = `https://pixabay.com/api/?key=21103852-9b5f4834542caaf4eef2c8533&image_type=photo&pretty=true&lang=ko&page=1`;
+        // const PRO = new Promise((res, rej) => {
+        //     //setTimeout(() => res(r), 3000);
+        //     const d = fetch(r).then(r => r.json());
+        //     res(d);
+        // });
+        // PRO.then((r) => {
+        //     r.hits.forEach(it => {
+        //         UL.innerHTML += `
+        //         <li>
+        //             <img src='${it.largeImageURL}'>
+        //         </li>
+        //             `
+        //     });
+        // });
+
+
+        const getData = async () => {
+            try {
+                const d = await fetch(r).then(r => r.json());
+                const x = await d.hits;
+                x.forEach(it => {
+                    UL.innerHTML += ` 
+                <li>
+                    <img src='${it.largeImageURL}'>
+                </li>
+                    `
+                })
+            } catch (err) {
+                console.log(err)
+            }
+
+        }
+
+        getData();
+
+        //setTimeout(getData, 3000)
+
+
+
+
+
+        //step03 : async await
+
+
+
+    </script>
+</body>
+
+</html>

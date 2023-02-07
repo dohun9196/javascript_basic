@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <h2></h2>
+    <script>
+        //step01.5 콜백함수의 이용.
+        const H1 = document.querySelector('h1');
+        const H2 = document.querySelector('h2');
+
+        const user = {
+            name: '개똥이',
+            id: 100
+        };
+
+        const getUser = (콜백) => {
+            setTimeout(() => {
+                콜백(user.name);
+                const getId = (콜백) => {
+                    setTimeout(() => {
+                        콜백(user.id);
+                    }, 1000)
+                }
+                getId(H2Handler)
+            }, 2000);
+
+        }
+
+        const H1Handler = x => H1.innerHTML = x;
+        const H2Handler = x => H2.innerHTML = x;
+        getUser(H1Handler);
+
+
+
+
+
+        //step02 : promise 도입.
+
+
+
+        //step03 : async await
+
+
+
+    </script>
+</body>
+
+</html>
