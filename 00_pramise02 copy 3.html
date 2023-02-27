@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <h2></h2>
+    <script>
+        //step01.5 콜백함수의 이용.
+        const H1 = document.querySelector('h1');
+        const H2 = document.querySelector('h2');
+        const D = `https://pixabay.com/api/?key=21103852-9b5f4834542caaf4eef2c8533&image_type=photo&pretty=true&lang=ko&page=1`;
+
+
+        const getUser = (cb) => {
+            const r = fetch(D)
+                .then(res => res.json())
+                .then(r => cb(r));
+        }
+
+        const WD = (r) => {
+            for (it of r.hits) {
+                H1.innerHTML += `
+                            <img src= '${it.largeImageURL}'/>
+                        `
+            }
+        }
+        getUser(WD);
+
+
+
+
+
+        //step02 : promise 도입.
+
+
+
+        //step03 : async await
+
+
+
+    </script>
+</body>
+
+</html>

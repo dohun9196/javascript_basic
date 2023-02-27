@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #333;
+        }
+
+        body.on {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="btn">THIS</label>
+    <input type="checkbox" id="btn">
+
+    <script>
+        const BTN = document.querySelector('#btn');
+        const BODY = document.body;
+        //클로져의 장점 : 전역변수를 사용하지 않음으로 오염을 줄일 수 있다.
+        //jquery $(function(){})에 함수 단위로 담기.
+
+        //https://poiemaweb.com/js-closure (..) 다시 만드기...
+        const OUT = () => {
+            const S = BTN.checked;
+            const I = () => {
+                if (S) {
+                    BODY.classList.add('on')
+                } else {
+                    BODY.classList.remove('on')
+                }
+
+                console.log(S)
+            }
+            I();
+        }
+        BTN.onchange = OUT;
+
+
+
+    </script>
+</body>
+
+</html>

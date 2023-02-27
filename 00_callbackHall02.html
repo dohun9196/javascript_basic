@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .img {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            width: 1600px;
+            margin: 0 auto;
+        }
+
+        .pop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pop.on {
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form id="search">
+        <input type="text" name="sc">
+        <button>SEARCH</button>
+    </form>
+
+    <ul class="img"></ul>
+    <div class="pop"></div>
+    <script>
+        const UL = document.querySelector('.img');
+        const BTN = document.querySelector('button');
+        const INPUT = document.querySelector('[name="sc"]');
+        const SEARCH_FORM = document.querySelector('#search');
+
+        const POP_IMAGES = (r) => {
+            UL.innerHTML = '';
+            for (it of r) {
+                UL.innerHTML += `<li>
+                        <img src='${it.largeImageURL}'/>
+                        `
+            }
+        }
+
+        const POP = document.querySelector('.pop');
+        console.log(POP)
+        const POP_REMOVE = () => {
+            POP.style.display = 'none'
+        }
+        POP.addEventListener('click', POP_REMOVE);
+
+        POP.addEventListener('wheel', e => {
+            e.preventDefault();
+        })
+
+        const POP_IMG = e => {
+            let { src } = e.target;
+            console.log(src);
+            POP.innerHTML = `
+                    <img src='${src}'/>
+                `
+            POP.style.display = 'flex'
+        }
+
+        UL.addEventListener('click', POP_IMG)
+
+
+        SEARCH_FORM.addEventListener('submit', e => {
+            e.preventDefault();
+            const key = INPUT.value;
+            getImage(key, POP_IMAGES);
+        })
+
+        const getImage = (sc, cb) => {
+            const url = `https://pixabay.com/api/?key=21103852-9b5f4834542caaf4eef2c8533&image_type=photo&pretty=true&lang=ko&page=1&q=${sc}`;
+            fetch(url)
+                .then(r => r.json())
+                .then(r => {
+                    cb(r.hits);
+                    console.log(r.hits);
+                });
+        }
+
+        getImage('', POP_IMAGES);
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
